@@ -1,73 +1,60 @@
-﻿Console.WriteLine("Введите свое имя:");
-string name;
+﻿string name;
 string surname;
 string hobby;
-string age;
-do
-{
-    name = Console.ReadLine() ?? string.Empty;
+string ageString;
+int age;
 
-    if (int.TryParse(name, out var nameSrting))
-    {
-        Console.WriteLine("Пожалуйста, введите свое Имя. Оно не должно быть числом:");
-    }
-    else
-    {
-        break;
-    }
+Console.WriteLine("Введите свое имя:");
+
+name = Console.ReadLine() ?? string.Empty;
+
+while (String.IsNullOrEmpty(name) == true)
+{
+    Console.WriteLine("Имя не может быть пустым");
+    name = Console.ReadLine() ?? string.Empty;
 }
-while (name as string != null);
 
 Console.WriteLine("Введите свою фамилию:");
-do
-{
-    surname = Console.ReadLine() ?? string.Empty;
 
-    if (int.TryParse(surname, out var surnameString))
-    {
-        Console.WriteLine("Пожалуйста, введите свою Фамилию. Она не должна быть числом:");
-    }
-    else
-    {
-        break;
-    }
+surname = Console.ReadLine() ?? string.Empty;
+
+while (String.IsNullOrEmpty(surname) == true)
+{
+    Console.WriteLine("Фамилия не может быть пустой");
+    surname = Console.ReadLine() ?? string.Empty;
 }
-while (surname as string != null);
 
 Console.WriteLine("Введите свой возраст:");
-do
+
+ageString = (Console.ReadLine()) ?? string.Empty;
+
+while (String.IsNullOrEmpty(ageString) == true)
 {
-    age = Console.ReadLine() ?? string.Empty;
-
-    if (int.TryParse(age, out var ageString))
-    {
-        break;
-    }
-    else
-    {
-        Console.WriteLine("Пожалуйста, введите свой Возраст. Он должен быть числом:");
-
-    }
+    Console.WriteLine("Возраст не может быть пустой");
+    ageString = Console.ReadLine() ?? string.Empty;
 }
-while (age as string != null);
+
+while (!int.TryParse(ageString, out var ageInt))
+{
+    Console.WriteLine("Возраст должен быть числом");
+    ageString = Console.ReadLine() ?? string.Empty;
+}
+age = Convert.ToInt32(ageString);
+
+if (age > 116 || age <= 0)
+{
+    Console.WriteLine("Возраст превышает допустимые значения");
+    ageString = Console.ReadLine() ?? string.Empty;
+}
 
 Console.WriteLine("Введите свое хобби:");
-do
+
+hobby = Console.ReadLine() ?? string.Empty;
+
+while (String.IsNullOrEmpty(hobby) == true)
 {
+    Console.WriteLine("Хобби не может быть пустым");
     hobby = Console.ReadLine() ?? string.Empty;
-
-    if (int.TryParse(hobby, out var nhobbyString))
-    {
-        Console.WriteLine("Пожалуйста, введите свое Хобби. Оно не должна быть числом:");
-    }
-    else
-    {
-        break;
-    }
 }
-while (hobby as string != null);
 
-Console.Write($" Имя: {name} \n Фамилия: {surname} \n Возраст: {age} \n Хобби: {hobby}");
-
-
-
+Console.Write($" Имя: {name} \n Фамилия: {surname} \n Возраст: {ageString} \n Хобби: {hobby}");

@@ -3,8 +3,8 @@ namespace Lesson1.Model
 {
     internal class Store
     {
-        public string Name { get; set; }
-        public string Adress { get; set; }
+        public string Name { get; }
+        public string Adress { get; }
 
         public Store(string name, string adress)
         {
