@@ -6,13 +6,13 @@ namespace Lesson5
     {
         public static string ClearString(this string testString) 
         {
-            string newString = Regex.Replace(testString, @"[^0-9a-zA-Z: ]+", ""); // оставит только цифры и буквы, но не уберет пробелы
+            string filteredString = Regex.Replace(testString, @"[^0-9a-zA-Z: ]+", ""); // оставит только цифры и буквы, но не уберет пробелы
 
-            string newString2 = Regex.Replace(newString, @"\s+", " "); // Уберет лишние пробелы. Используется два выражения, чтобы не было пробела, если недопустимый символ в середине слова
+            filteredString = Regex.Replace(filteredString, @"\s+", " "); // Уберет лишние пробелы. Используется два выражения, чтобы не было пробела, если недопустимый символ в середине слова
 
-            newString2 = newString2.Trim();
+            filteredString = filteredString.Trim();
 
-            return newString2;
+            return filteredString;
         }
     }
 }
