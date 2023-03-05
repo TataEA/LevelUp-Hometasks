@@ -1,7 +1,7 @@
 USE [Store]
 GO
 
-/****** Object:  Table [dbo].[Stocks]    Script Date: 28.02.2023 23:14:00 ******/
+/****** Object:  Table [dbo].[Stocks]    Script Date: 05.03.2023 20:06:54 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,7 +11,7 @@ GO
 CREATE TABLE [dbo].[Stocks](
 	[Id] [uniqueidentifier] NOT NULL,
 	[Name] [nvarchar](100) NOT NULL,
-	[Adress] [nchar](300) NOT NULL,
+	[Adress] [nvarchar](300) NOT NULL,
  CONSTRAINT [PK_Stocks_1] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
