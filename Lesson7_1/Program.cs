@@ -1,36 +1,21 @@
 ﻿using Lesson7_1;
-using static System.Formats.Asn1.AsnWriter;
 
-int M;
-int N;
+Console.WriteLine("Введите начальное и конечное значения диапазона через пробел:");
+string rangeString = Console.ReadLine() ?? string.Empty;
 
-Console.WriteLine("Введите начальное значение диапозона:");
-var firstNumber = Console.ReadLine() ?? String.Empty;
+string[] rangeArr = rangeString.Split(new Char[] { ' ' });
 
- while (!int.TryParse(firstNumber, out M) || M < 0)
+for (int i = 0; i < 2; i++) // Проверка только двух значений, так как для диапазона нужны только два числа
 {
-    Console.WriteLine("Значение должно быть положительным числом");
-    firstNumber = Console.ReadLine() ?? String.Empty;
-}
-
-Console.WriteLine("Введите последнее значение диапозона:");
-var lastNumber = Console.ReadLine();
-
-while (!int.TryParse(lastNumber, out N) || N < 0)
-{
-    Console.WriteLine("Значение должно быть положительным числом");
-    lastNumber = Console.ReadLine() ?? String.Empty;
-}
-
-while (M > N)
-{
-    Console.WriteLine("Начало диапозона не может быть больше его окончания. Введите последнее значение больше начального");
-    lastNumber = Console.ReadLine();
-    while (!int.TryParse(lastNumber, out N) || N < 0)
+    while (!int.TryParse(rangeArr[i], out int num) || num < 0)
     {
-        Console.WriteLine("Значение должно быть положительным числом");
-        lastNumber = Console.ReadLine() ?? String.Empty;
+        Console.WriteLine($"Значение номер {i+1} должно быть положительным числом");
+        rangeArr[i] = Console.ReadLine() ?? string.Empty;
     }
 }
 
-_ = new Square_Root(M, N);
+int M = Math.Min(int.Parse(rangeArr[0]), int.Parse(rangeArr[1])); // находит начало диапазона и переводит в int
+int N = Math.Max(int.Parse(rangeArr[0]), int.Parse(rangeArr[1])); // находит конец диапазона и переводит в int
+
+var exemplar = new Square_Root();
+exemplar.RangeSquare(M, N);

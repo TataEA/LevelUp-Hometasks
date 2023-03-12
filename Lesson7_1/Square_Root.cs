@@ -1,14 +1,23 @@
-﻿namespace Lesson7_1
+﻿using System;
+using System.Numerics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Lesson7_1
 {
     internal class Square_Root
     {
-        public Square_Root (int firstNumber, int lastNumber)
+        public void RangeSquare(int firstNumber, int lastNumber)
         {
-            for (int i = firstNumber; i <= lastNumber; i++ )
+
+            int[] massiv = Enumerable.Range(firstNumber, lastNumber - firstNumber + 1).ToArray(); // создается массив по диапазону
+
+            var squares = from n in massiv.AsParallel().AsOrdered() // разбиваем и сортируем AsOrdered (без него неверный опрядок, заметен на 100 записях)
+                          select n;
+
+            foreach (var n in squares)
             {
-                int number = i;
-                Console.WriteLine ($" Число: {number}, Квадратный корень: {Math.Sqrt(number)}");
-            }
-        }   
+                 Console.WriteLine($" Число: {n}, Квадратный корень: {Math.Sqrt(n)}");
+            } 
+        }
     }
 }
